@@ -1,2 +1,2 @@
 Run the project:
-    git push --set-upstream origin main
+    dotnet run --project Prism.csproj
