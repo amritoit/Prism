@@ -18,4 +18,7 @@ public sealed class AppSettings
 
     /// <summary>Optional system prompt applied to every conversation.</summary>
     public string SystemPrompt { get; set; } = string.Empty;
+
+    /// <summary>UI theme mode: "System", "Light" or "Dark".</summary>
+    public string ThemeMode { get; set; } = "System";
 }

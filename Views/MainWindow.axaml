@@ -11,7 +11,7 @@
         Icon="/Assets/avalonia-logo.ico"
         Width="1040" Height="680"
         MinWidth="720" MinHeight="460"
-        Background="#F5EFE8"
+        Background="{DynamicResource WindowBackground}"
         Title="Prism">
 
     <Design.DataContext>
@@ -21,36 +21,36 @@
     <Window.Styles>
         <!-- Buttons -->
         <Style Selector="Button.primary">
-            <Setter Property="Background" Value="#A9855F"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
             <Setter Property="Padding" Value="14,8"/>
             <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
         <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#8E6E4C"/>
+            <Setter Property="Background" Value="{DynamicResource PrimaryHoverBrush}"/>
         </Style>
 
         <Style Selector="Button.danger">
-            <Setter Property="Background" Value="#DC3545"/>
+            <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="14,8"/>
             <Setter Property="CornerRadius" Value="8"/>
         </Style>
         <Style Selector="Button.danger:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#BB2D3B"/>
+            <Setter Property="Background" Value="{DynamicResource DangerHoverBrush}"/>
         </Style>
 
         <Style Selector="Button.outline">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#8E6E4C"/>
-            <Setter Property="BorderBrush" Value="#C9B79C"/>
+            <Setter Property="Foreground" Value="{DynamicResource OutlineForeground}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource OutlineBorder}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="12,7"/>
             <Setter Property="CornerRadius" Value="8"/>
         </Style>
         <Style Selector="Button.outline:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#F0E7DB"/>
+            <Setter Property="Background" Value="{DynamicResource OutlineHoverBackground}"/>
         </Style>
 
         <!-- Chat bubbles -->
@@ -62,25 +62,25 @@
         </Style>
         <Style Selector="Border.user">
             <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Background" Value="#A9855F"/>
+            <Setter Property="Background" Value="{DynamicResource BubbleUserBackground}"/>
         </Style>
         <Style Selector="Border.assistant">
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Background" Value="#FFFFFF"/>
-            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="{DynamicResource BubbleAssistantBackground}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BubbleBorder}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BoxShadow" Value="0 1 3 0 #1A000000"/>
         </Style>
         <Style Selector="Border.user SelectableTextBlock">
-            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Foreground" Value="{DynamicResource BubbleUserForeground}"/>
         </Style>
         <Style Selector="Border.assistant SelectableTextBlock">
-            <Setter Property="Foreground" Value="#0F172A"/>
+            <Setter Property="Foreground" Value="{DynamicResource BubbleAssistantForeground}"/>
         </Style>
         <Style Selector="TextBlock.header">
             <Setter Property="FontSize" Value="11"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#64748B"/>
+            <Setter Property="Foreground" Value="{DynamicResource HeaderForeground}"/>
             <Setter Property="Margin" Value="4,0,4,2"/>
         </Style>
 
@@ -93,14 +93,14 @@
             <Setter Property="Padding" Value="10,8"/>
             <Setter Property="Margin" Value="4,2"/>
             <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="Foreground" Value="{DynamicResource SessionItemForeground}"/>
         </Style>
         <Style Selector="ListBox.sessions ListBoxItem:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#243247"/>
+            <Setter Property="Background" Value="{DynamicResource SessionItemHoverBackground}"/>
             <Setter Property="CornerRadius" Value="10"/>
         </Style>
         <Style Selector="ListBox.sessions ListBoxItem:selected /template/ ContentPresenter">
-            <Setter Property="Background" Value="#0D6EFD"/>
+            <Setter Property="Background" Value="{DynamicResource SessionItemSelectedBackground}"/>
             <Setter Property="CornerRadius" Value="10"/>
         </Style>
 
@@ -113,20 +113,20 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
         <Style Selector="TreeView.tree TreeViewItem:selected /template/ Border#PART_LayoutRoot">
-            <Setter Property="Background" Value="#D8C6AC"/>
+            <Setter Property="Background" Value="{DynamicResource TreeSelectedBackground}"/>
         </Style>
 
         <!-- Compact icon button (sidebar) -->
         <Style Selector="Button.icon">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground" Value="#7A6E60"/>
+            <Setter Property="Foreground" Value="{DynamicResource IconForeground}"/>
             <Setter Property="Padding" Value="7"/>
             <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="FontSize" Value="15"/>
         </Style>
         <Style Selector="Button.icon:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#E2D6C6"/>
+            <Setter Property="Background" Value="{DynamicResource IconHoverBackground}"/>
         </Style>
 
         <!-- Per-row "…" menu: hidden until the row is hovered or selected -->
@@ -154,8 +154,8 @@
             <Border Grid.Column="0">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                        <GradientStop Color="#EFE7DE" Offset="0"/>
-                        <GradientStop Color="#E4D8CB" Offset="1"/>
+                        <GradientStop Color="{DynamicResource SidebarGradientTopColor}" Offset="0"/>
+                        <GradientStop Color="{DynamicResource SidebarGradientBottomColor}" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <DockPanel>
@@ -171,7 +171,7 @@
                                 </Border.Background>
                             </Border>
                             <TextBlock Grid.Column="1" Text="Prism" FontSize="20" FontWeight="Bold"
-                                       Foreground="#4A4038" VerticalAlignment="Center"/>
+                                       Foreground="{DynamicResource TitleForeground}" VerticalAlignment="Center"/>
 
                             <Button Grid.Column="2" Classes="icon" Content="⌕"
                                     FontSize="18"
@@ -222,12 +222,12 @@
                                     <TextBlock Grid.Column="0"
                                                Text="{Binding Name}"
                                                FontWeight="Bold" FontSize="12"
-                                               Foreground="#6B6157"
+                                               Foreground="{DynamicResource FolderForeground}"
                                                TextTrimming="CharacterEllipsis"
                                                VerticalAlignment="Center"/>
                                     <TextBlock Grid.Column="1"
                                                Text="{Binding CountLabel}"
-                                               FontSize="11" Foreground="#A2917E"
+                                               FontSize="11" Foreground="{DynamicResource FolderCountForeground}"
                                                Margin="8,0,4,0"
                                                VerticalAlignment="Center"/>
                                     <Button Grid.Column="2" Classes="icon rowmenu" Content="🗑"
@@ -246,9 +246,9 @@
                                     <StackPanel Grid.Column="0" Spacing="2">
                                         <TextBlock Text="{Binding Title}"
                                                    TextTrimming="CharacterEllipsis"
-                                                   Foreground="#4A4038"/>
+                                                   Foreground="{DynamicResource SessionTitleForeground}"/>
                                         <TextBlock Text="{Binding Subtitle}"
-                                                   FontSize="11" Foreground="#8A7C6C"/>
+                                                   FontSize="11" Foreground="{DynamicResource SessionSubtitleForeground}"/>
                                     </StackPanel>
 
                                     <Button Grid.Column="1" Classes="icon rowmenu" Content="•••"
@@ -282,7 +282,7 @@
 
             <!-- Draggable divider to resize the sidebar -->
             <GridSplitter Grid.Column="1" Width="5"
-                          Background="#D8CCBD"
+                          Background="{DynamicResource SplitterBackground}"
                           ResizeDirection="Columns"
                           HorizontalAlignment="Stretch"/>
 
@@ -290,7 +290,7 @@
             <Grid Grid.Column="2" RowDefinitions="Auto,*,Auto">
 
                 <!-- Top toolbar -->
-                <Border Grid.Row="0" Background="#EAFFFFFF" BorderBrush="#E2E8F0"
+                <Border Grid.Row="0" Background="{DynamicResource PanelBarBackground}" BorderBrush="{DynamicResource PanelBorder}"
                         BorderThickness="0,0,0,1" Padding="16,12">
                     <Grid ColumnDefinitions="Auto,Auto,Auto,*,Auto">
                         <ComboBox Grid.Column="0"
@@ -418,12 +418,12 @@
                 </ScrollViewer>
 
                 <!-- Input bar -->
-                <Border Grid.Row="2" Background="#EAFFFFFF" BorderBrush="#E2E8F0"
+                <Border Grid.Row="2" Background="{DynamicResource PanelBarBackground}" BorderBrush="{DynamicResource PanelBorder}"
                         BorderThickness="0,1,0,0" Padding="16,12">
                     <StackPanel Spacing="8">
-                        <Border Background="#FFF3CD" CornerRadius="8" Padding="10,7"
+                        <Border Background="{DynamicResource StatusBackground}" CornerRadius="8" Padding="10,7"
                                 IsVisible="{Binding StatusMessage, Converter={x:Static ObjectConverters.IsNotNull}}">
-                            <TextBlock Text="{Binding StatusMessage}" Foreground="#664D03" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding StatusMessage}" Foreground="{DynamicResource StatusForeground}" TextWrapping="Wrap"/>
                         </Border>
                         <Grid ColumnDefinitions="*,Auto">
                             <TextBox Grid.Column="0" Name="InputBox"
@@ -449,16 +449,16 @@
         </Grid>
 
         <!-- Settings overlay -->
-        <Border Background="#66000000"
+        <Border Background="{DynamicResource OverlayBackground}"
                 IsVisible="{Binding IsSettingsOpen}">
-            <Border Background="#FFFFFF" CornerRadius="16" Padding="22"
+            <Border Background="{DynamicResource SettingsPanelBackground}" CornerRadius="16" Padding="22"
                     Width="540" MaxHeight="580"
-                    BorderBrush="#E2E8F0" BorderThickness="1"
+                    BorderBrush="{DynamicResource PanelBorder}" BorderThickness="1"
                     BoxShadow="0 10 40 0 #33000000"
                     HorizontalAlignment="Center" VerticalAlignment="Center">
                 <DockPanel>
                     <TextBlock DockPanel.Dock="Top" Text="Settings"
-                               FontSize="19" FontWeight="Bold" Foreground="#0F172A"
+                               FontSize="19" FontWeight="Bold" Foreground="{DynamicResource SettingsHeadingForeground}"
                                Margin="0,0,0,14"/>
 
                     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
@@ -472,23 +472,30 @@
                     <ScrollViewer>
                         <StackPanel Spacing="16">
                             <StackPanel Spacing="5">
-                                <TextBlock Text="System prompt (optional)" FontWeight="SemiBold" Foreground="#334155"/>
+                                <TextBlock Text="Appearance" FontWeight="SemiBold" Foreground="{DynamicResource SettingsLabelForeground}"/>
+                                <ComboBox HorizontalAlignment="Stretch"
+                                          ItemsSource="{Binding ThemeOptions}"
+                                          SelectedItem="{Binding SelectedTheme}"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="System prompt (optional)" FontWeight="SemiBold" Foreground="{DynamicResource SettingsLabelForeground}"/>
                                 <TextBox Text="{Binding SystemPrompt}"
                                          AcceptsReturn="True" TextWrapping="Wrap"
                                          MinHeight="60" CornerRadius="8"
                                          PlaceholderText="e.g. You are a helpful assistant."/>
                             </StackPanel>
 
-                            <TextBlock Text="API keys" FontWeight="Bold" Foreground="#0F172A" Margin="0,4,0,0"/>
+                            <TextBlock Text="API keys" FontWeight="Bold" Foreground="{DynamicResource SettingsHeadingForeground}" Margin="0,4,0,0"/>
                             <ItemsControl ItemsSource="{Binding ProviderKeys}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate x:DataType="vm:ProviderKeyViewModel">
-                                        <Border Background="#F8FAFC" CornerRadius="10"
-                                                BorderBrush="#E2E8F0" BorderThickness="1"
+                                        <Border Background="{DynamicResource ProviderRowBackground}" CornerRadius="10"
+                                                BorderBrush="{DynamicResource PanelBorder}" BorderThickness="1"
                                                 Padding="12" Margin="0,0,0,10">
                                             <StackPanel Spacing="6">
                                                 <TextBlock Text="{Binding DisplayName}"
-                                                           FontWeight="SemiBold" Foreground="#1E293B"/>
+                                                           FontWeight="SemiBold" Foreground="{DynamicResource ProviderNameForeground}"/>
                                                 <TextBox Text="{Binding Key}"
                                                          PasswordChar="•" CornerRadius="8"
                                                          PlaceholderText="Paste API key"/>

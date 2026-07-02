@@ -2,13 +2,142 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Prism.App"
              xmlns:local="using:Prism"
-             RequestedThemeVariant="Light">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows the system theme variant. "Dark" or "Light" force a specific one. -->
 
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
-  
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+
+                <!-- ===================== LIGHT ===================== -->
+                <ResourceDictionary x:Key="Light">
+                    <!-- Sidebar gradient (colors, used by GradientStop) -->
+                    <Color x:Key="SidebarGradientTopColor">#EFE7DE</Color>
+                    <Color x:Key="SidebarGradientBottomColor">#E4D8CB</Color>
+
+                    <SolidColorBrush x:Key="WindowBackground" Color="#F5EFE8"/>
+
+                    <SolidColorBrush x:Key="PrimaryBrush" Color="#A9855F"/>
+                    <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#8E6E4C"/>
+                    <SolidColorBrush x:Key="PrimaryForeground" Color="#FFFFFF"/>
+
+                    <SolidColorBrush x:Key="DangerBrush" Color="#DC3545"/>
+                    <SolidColorBrush x:Key="DangerHoverBrush" Color="#BB2D3B"/>
+
+                    <SolidColorBrush x:Key="OutlineForeground" Color="#8E6E4C"/>
+                    <SolidColorBrush x:Key="OutlineBorder" Color="#C9B79C"/>
+                    <SolidColorBrush x:Key="OutlineHoverBackground" Color="#F0E7DB"/>
+
+                    <SolidColorBrush x:Key="BubbleAssistantBackground" Color="#FFFFFF"/>
+                    <SolidColorBrush x:Key="BubbleBorder" Color="#E2E8F0"/>
+                    <SolidColorBrush x:Key="BubbleAssistantForeground" Color="#0F172A"/>
+                    <SolidColorBrush x:Key="BubbleUserBackground" Color="#A9855F"/>
+                    <SolidColorBrush x:Key="BubbleUserForeground" Color="#FFFFFF"/>
+
+                    <SolidColorBrush x:Key="HeaderForeground" Color="#64748B"/>
+
+                    <SolidColorBrush x:Key="SessionItemForeground" Color="#4A4038"/>
+                    <SolidColorBrush x:Key="SessionItemHoverBackground" Color="#E2D6C6"/>
+                    <SolidColorBrush x:Key="SessionItemSelectedBackground" Color="#D8C6AC"/>
+                    <SolidColorBrush x:Key="TreeSelectedBackground" Color="#D8C6AC"/>
+
+                    <SolidColorBrush x:Key="IconForeground" Color="#7A6E60"/>
+                    <SolidColorBrush x:Key="IconHoverBackground" Color="#E2D6C6"/>
+
+                    <SolidColorBrush x:Key="SplitterBackground" Color="#D8CCBD"/>
+
+                    <SolidColorBrush x:Key="TitleForeground" Color="#4A4038"/>
+                    <SolidColorBrush x:Key="FolderForeground" Color="#6B6157"/>
+                    <SolidColorBrush x:Key="FolderCountForeground" Color="#A2917E"/>
+                    <SolidColorBrush x:Key="SessionTitleForeground" Color="#4A4038"/>
+                    <SolidColorBrush x:Key="SessionSubtitleForeground" Color="#8A7C6C"/>
+
+                    <SolidColorBrush x:Key="PanelBarBackground" Color="#EAFFFFFF"/>
+                    <SolidColorBrush x:Key="PanelBorder" Color="#E2E8F0"/>
+
+                    <SolidColorBrush x:Key="StatusBackground" Color="#FFF3CD"/>
+                    <SolidColorBrush x:Key="StatusForeground" Color="#664D03"/>
+
+                    <SolidColorBrush x:Key="OverlayBackground" Color="#66000000"/>
+                    <SolidColorBrush x:Key="SettingsPanelBackground" Color="#FFFFFF"/>
+                    <SolidColorBrush x:Key="SettingsHeadingForeground" Color="#0F172A"/>
+                    <SolidColorBrush x:Key="SettingsLabelForeground" Color="#334155"/>
+                    <SolidColorBrush x:Key="ProviderNameForeground" Color="#1E293B"/>
+                    <SolidColorBrush x:Key="ProviderRowBackground" Color="#F8FAFC"/>
+
+                    <SolidColorBrush x:Key="BrainSynapse" Color="#6E5A40"/>
+                    <SolidColorBrush x:Key="BrainNodeGlow" Color="#D8C6AC"/>
+                    <SolidColorBrush x:Key="BrainNodeCore" Color="#8A6A47"/>
+                </ResourceDictionary>
+
+                <!-- ===================== DARK ===================== -->
+                <ResourceDictionary x:Key="Dark">
+                    <Color x:Key="SidebarGradientTopColor">#232019</Color>
+                    <Color x:Key="SidebarGradientBottomColor">#1B1813</Color>
+
+                    <SolidColorBrush x:Key="WindowBackground" Color="#191510"/>
+
+                    <SolidColorBrush x:Key="PrimaryBrush" Color="#B8926A"/>
+                    <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#CBA47B"/>
+                    <SolidColorBrush x:Key="PrimaryForeground" Color="#1A1510"/>
+
+                    <SolidColorBrush x:Key="DangerBrush" Color="#E4556A"/>
+                    <SolidColorBrush x:Key="DangerHoverBrush" Color="#F06A7E"/>
+
+                    <SolidColorBrush x:Key="OutlineForeground" Color="#CBA47B"/>
+                    <SolidColorBrush x:Key="OutlineBorder" Color="#4A4136"/>
+                    <SolidColorBrush x:Key="OutlineHoverBackground" Color="#2C2620"/>
+
+                    <SolidColorBrush x:Key="BubbleAssistantBackground" Color="#262119"/>
+                    <SolidColorBrush x:Key="BubbleBorder" Color="#3A342B"/>
+                    <SolidColorBrush x:Key="BubbleAssistantForeground" Color="#E9E2D7"/>
+                    <SolidColorBrush x:Key="BubbleUserBackground" Color="#A9855F"/>
+                    <SolidColorBrush x:Key="BubbleUserForeground" Color="#FFFFFF"/>
+
+                    <SolidColorBrush x:Key="HeaderForeground" Color="#9A8E7E"/>
+
+                    <SolidColorBrush x:Key="SessionItemForeground" Color="#E9E2D7"/>
+                    <SolidColorBrush x:Key="SessionItemHoverBackground" Color="#332D25"/>
+                    <SolidColorBrush x:Key="SessionItemSelectedBackground" Color="#3E362B"/>
+                    <SolidColorBrush x:Key="TreeSelectedBackground" Color="#3E362B"/>
+
+                    <SolidColorBrush x:Key="IconForeground" Color="#B4A794"/>
+                    <SolidColorBrush x:Key="IconHoverBackground" Color="#332D25"/>
+
+                    <SolidColorBrush x:Key="SplitterBackground" Color="#2E2820"/>
+
+                    <SolidColorBrush x:Key="TitleForeground" Color="#EFE7DE"/>
+                    <SolidColorBrush x:Key="FolderForeground" Color="#C9BCAB"/>
+                    <SolidColorBrush x:Key="FolderCountForeground" Color="#8A7C6C"/>
+                    <SolidColorBrush x:Key="SessionTitleForeground" Color="#E9E2D7"/>
+                    <SolidColorBrush x:Key="SessionSubtitleForeground" Color="#9A8C7A"/>
+
+                    <SolidColorBrush x:Key="PanelBarBackground" Color="#1F1B15"/>
+                    <SolidColorBrush x:Key="PanelBorder" Color="#3A342B"/>
+
+                    <SolidColorBrush x:Key="StatusBackground" Color="#463C1C"/>
+                    <SolidColorBrush x:Key="StatusForeground" Color="#F5E6A8"/>
+
+                    <SolidColorBrush x:Key="OverlayBackground" Color="#99000000"/>
+                    <SolidColorBrush x:Key="SettingsPanelBackground" Color="#232019"/>
+                    <SolidColorBrush x:Key="SettingsHeadingForeground" Color="#EFE7DE"/>
+                    <SolidColorBrush x:Key="SettingsLabelForeground" Color="#C9BCAB"/>
+                    <SolidColorBrush x:Key="ProviderNameForeground" Color="#E9E2D7"/>
+                    <SolidColorBrush x:Key="ProviderRowBackground" Color="#2A251F"/>
+
+                    <SolidColorBrush x:Key="BrainSynapse" Color="#8A7457"/>
+                    <SolidColorBrush x:Key="BrainNodeGlow" Color="#4A4136"/>
+                    <SolidColorBrush x:Key="BrainNodeCore" Color="#B8926A"/>
+                </ResourceDictionary>
+
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>

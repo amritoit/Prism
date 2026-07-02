@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Prism.Models;
@@ -27,6 +29,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private ChatSession? _currentSession;
     private SessionViewModel? _currentSessionVm;
     private bool _suppressSessionLoad;
+    private bool _suppressThemeSave;
 
     public MainWindowViewModel()
         : this(DesignData.Registry(), new SettingsService(), new SessionStore(), new ProjectStore())
@@ -64,6 +67,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
         SystemPrompt = _settings.SystemPrompt;
 
+        _suppressThemeSave = true;
+        SelectedTheme = ThemeOptions.Contains(_settings.ThemeMode) ? _settings.ThemeMode : "System";
+        _suppressThemeSave = false;
+
         var initial = Providers.FirstOrDefault(p => p.Id == _settings.LastProviderId)
                       ?? Providers.FirstOrDefault();
         SelectedProvider = initial;
@@ -75,6 +82,34 @@ public partial class MainWindowViewModel : ViewModelBase
     public ObservableCollection<ProviderKeyViewModel> ProviderKeys { get; }
     public ObservableCollection<SessionViewModel> Sessions { get; }
     public ObservableCollection<SessionGroupViewModel> Groups { get; }
+
+    /// <summary>Available UI theme modes shown in Settings.</summary>
+    public string[] ThemeOptions { get; } = { "System", "Light", "Dark" };
+
+    [ObservableProperty]
+    private string _selectedTheme = "System";
+
+    partial void OnSelectedThemeChanged(string value)
+    {
+        ApplyTheme(value);
+        if (_suppressThemeSave)
+            return;
+        _settings.ThemeMode = value;
+        _settingsService.Save(_settings);
+    }
+
+    private static void ApplyTheme(string mode)
+    {
+        if (Application.Current is not { } app)
+            return;
+
+        app.RequestedThemeVariant = mode switch
+        {
+            "Light" => ThemeVariant.Light,
+            "Dark" => ThemeVariant.Dark,
+            _ => ThemeVariant.Default // follows the OS setting
+        };
+    }
 
     [ObservableProperty]
     private IChatProvider? _selectedProvider;
